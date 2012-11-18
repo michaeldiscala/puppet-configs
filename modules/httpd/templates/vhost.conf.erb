@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+	ServerName <%= vhost_domain %>
+	ServerAdmin webmaster@<%= vhost_domain %>
+	DocumentRoot <%= vhost_documentroot %>
+	ErrorLog logs/<%= vhost_domain %>-error-log
+	CustomLog logs/<%= vhost_domain %>-access_log	common
+	
+	<Directory /var/www/<%= vhost_domain %>>
+		Allow from all
+		Options +Indexes
+		AllowOverride all
+	</Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+	ServerName www.<%= vhost_domain %>
+	Redirect 301 / http://<%= vhost_domain %>
+</VirtualHost>

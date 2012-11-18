@@ -1,0 +1,2 @@
+This module contains essentials that should be shipped with every node. See
+manifests for exact list of installed packages.
