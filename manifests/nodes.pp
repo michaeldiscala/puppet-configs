@@ -8,11 +8,13 @@ node default {
 	rvm_system_ruby { $ruby_version:
 		ensure      => "present",
 		default_use => true,
+		before      => Class["rvm::passenger::apache"],
 	}
 	class { "rvm::passenger::apache":
 		ruby_version => $ruby_version,
 		version      => $passenger_version,
-		require      => Class['httpd','rvm'],
+		require      => Class["httpd", "rvm"], 
 	} 
+
 
 }
